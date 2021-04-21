@@ -1,0 +1,15 @@
+const express = require("express");
+const router = express.Router();
+const indexController = require("../controllers/indexController");
+const accountController = require("../controllers/accountController");
+const taskController = require("../controllers/taskController");
+router.post("/createAccount", accountController.createAccount);
+router.post("/login", accountController.login);
+router.get("/", indexController.index);
+router.get("/register", indexController.register);
+router.get("/addtaskpage", indexController.addTask);
+router.post("/addTask", taskController.createTask);
+router.get("/updatepage", indexController.updateTask);
+router.post("/updateTask", taskController.updateTask);
+router.get("/delete", taskController.deleteTask);
+module.exports = router;

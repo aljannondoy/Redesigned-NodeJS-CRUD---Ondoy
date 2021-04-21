@@ -1,0 +1,143 @@
+<html>
+<head>
+ <%- include('partials/head.ejs')%>
+ <link href="/css/profile.css" rel="stylesheet" type="text/css">
+</head>
+    <body>
+         <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <div class="container">
+          <a class="navbar-brand" href="#"><%=data.account.username%></a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/">Sign out</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    
+      <!-- Page Header -->
+      <header class="masthead" style="background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <div class="site-heading">
+                <h1>MY TO-DO LIST</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    
+      <!-- Main Content -->
+      <div class="container">
+      
+        <div class="clearfix">
+            <a class="btn btn-primary float-right" href="/addtaskpage/?uuid=<%=data.account.uuid%>">Add Tasks &rarr;</a>
+        </div>    
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+                <%if(data.task.length!=0){%>
+              <% for(x = 0; x<data.task.length;x++){
+                  %>
+                  <div class="post-preview">
+                          <h2 class="post-title">
+                           <%=data.task[x].task%>
+                          </h2>
+                        <p class="post-meta">Created: <%=data.task[x].createdAt%></p>
+                        <%if(data.task[x].status == "pending"){
+                            %>
+                            <p class="post-meta">Completed: Not yet completed</p>
+                            <%
+                        }else{
+                            %>
+                            <p class="post-meta">Completed: <%=data.task[x].updatedAt%></p>
+                            <%
+                        }%>
+                                <p class="post-title"><b>Status:</b>                      
+                            <%if(data.task[x].status == 'pending'){
+                                %>
+                                    <i style="color:blue;">Pending</i>
+                                    <div class="row clearfix">
+                                            <a class="btn btn-success float-right" href="/updatepage/?task_id=<%=data.task[x].id%>">Update Task &rarr;</a>
+                                            &emsp;  &emsp;  &emsp;  &emsp;
+                                                    <a class="btn btn-danger float-right" href="/delete/?task_id=<%=data.task[x].id%>&uuid=<%=data.task[x].accountUuid%>">Delete Task &rarr;</a>
+                                                 
+                                        </div>
+                                <%
+                            } else{
+                                %>
+                                    <i style="color: green;">Complete</i>
+                                    <div class="row clearfix">
+                                                    <a class="btn btn-danger float-right" href="/delete/?task_id=<%=data.task[x].id%>&uuid=<%=data.task[x].accountUuid%>">Delete Task &rarr;</a>
+                                                 
+                                        </div>
+                                <%
+                            }%></p>  
+                      </div>
+                     
+                             
+                      
+                      <hr>
+                    
+                  <%
+              }%>
+              <%
+            }else{
+                %>
+                <h1>NO TASKS YET</h1>
+                <%
+            }%>
+              <!-- Pager -->
+            
+          </div>
+        </div>
+      </div>
+    
+      <hr>
+    
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+              <ul class="list-inline text-center">
+                <li class="list-inline-item">
+                  <a href="#">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#">
+                    <span class="fa-stack fa-lg">
+                      <i class="fas fa-circle fa-stack-2x"></i>
+                      <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+              <p class="copyright text-muted">Copyright &copy; My TO-DO List 2020</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </body>
+</html>

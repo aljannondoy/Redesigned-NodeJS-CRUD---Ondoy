@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <%- include('partials/head.ejs')%>
+        <link href="/css/register.css" rel="stylesheet" type="text/css">
+    </head>
+ 
+    <body>
+        <div class="container">
+            <br>
+            
+            <hr>
+            <div class="card bg-light" style="max-width: 500px; margin-left: 25%;">
+            <article class="card-body mx-auto" style="max-width: 500px;">
+                <h4 class="card-title mt-3 text-center">Update Task</h4>
+                <form method="POST" action="/updateTask?task_id=<%=data.id%>">
+                    <h6>Task Title:</h6>
+                <div class="form-group input-group">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> </span>
+                     </div>
+                    <input name="taskcontent" class="form-control" placeholder="Task Title" type="text" value="<%=data.task%>" required>
+                </div> <!-- form-group// -->
+                <br>
+                <h6>Is this task completed?: </h6>
+                <div class="form">
+                        <label>Yes <input name="taskcompleted" class="control" type="radio" value="yes" required></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>No <input name="taskcompleted" class="control" type="radio" value="no" required></label>
+                    </div><br>                             
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Update Task  </button>
+                </div> <!-- form-group// -->                                                                      
+            </form>
+            </article>
+            </div> <!-- card.// -->
+            
+            </div> 
+            <!--container end.//-->
+            
+            
+    </body>
+</html>
+

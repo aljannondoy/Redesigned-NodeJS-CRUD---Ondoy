@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <%- include('partials/head.ejs')%>
+        <link href="/css/register.css" rel="stylesheet" type="text/css">
+    </head>
+ 
+    <body>
+        <div class="container">
+            <br>
+            <%if(flag){%>
+                <div class="row err-reg">
+                    <h6 style="color: red;">Registration Failed, Password didn't match</h6>
+                </div>
+              <%}%>
+            <hr>
+            
+            
+            
+            
+            
+            <div class="card bg-light">
+            <article class="card-body mx-auto" style="max-width: 400px;">
+                <h4 class="card-title mt-3 text-center">Create Account</h4>
+                <p class="text-center">Get started with your free account</p>
+                <p>
+                    <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
+                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
+                </p>
+                <p class="divider-text">
+                    <span class="bg-light or">OR</span>
+                </p>
+                <form method="POST" action="/createAccount">
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                     </div>
+                    <input name="username" class="form-control" placeholder="username" type="text" required>
+                </div> <!-- form-group// -->
+                <div class="form">
+                    <label>Admin <input name="type" class="control" type="radio" value="admin" required></label>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Client <input name="type" class="control" type="radio" value="client" required></label>
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="password" class="form-control" placeholder="Create password" type="password" required>
+                </div> <!-- form-group// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input name="confirmpass" class="form-control" placeholder="Repeat password" type="password" required>
+                </div> <!-- form-group// -->                                      
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                </div> <!-- form-group// -->      
+                <div class="row card-footer">
+                    <div class="col-lg-12 d-flex justify-content-center links ml-10">
+                        Have an account already?	&nbsp;&nbsp;&nbsp;
+                    </div>
+                    <div class="col-lg-12 form-group"> <a  class="btn btn-primary btn-block" href="/">Sign in</a></div>
+                </div>                                                             
+            </form>
+            </article>
+            </div> <!-- card.// -->
+            
+            </div> 
+            <!--container end.//-->
+            
+            
+    </body>
+</html>
